@@ -10,6 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <div id="container">
     <h1>Login</h1>
+    <form action="/users/login" method="post">
+      <label>Email: </label><input type="text" name="email">
+      <label>Password: </label><input type="text" name="password">
+      <input type="submit" value="Login!">
+    </form>
   </div>
 
 </body>
