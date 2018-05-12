@@ -2,12 +2,29 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
-	public function register()
+
+  // load the new user registration page
+	public function newreg()
 	{
 		$this->load->view('/users/regpage');
   }
-  public function login()
+
+  // register the user
+  public function reg()
+  {
+
+  }
+
+  // load the login page
+  public function logpage()
   {
     $this->load->view('/users/loginpage');
   }
+
+  // log the user in
+  public function login()
+  {
+    
+  }
+
 }
