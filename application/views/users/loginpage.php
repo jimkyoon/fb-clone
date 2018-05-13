@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <h1>Login</h1>
     <form action="/users/login" method="post">
       <label>Email: </label><input type="text" name="email">
-      <label>Password: </label><input type="hidden" name="password">
+      <label>Password: </label><input type="password" name="password">
       <input type="submit" value="Login!">
     </form>
   </div>
