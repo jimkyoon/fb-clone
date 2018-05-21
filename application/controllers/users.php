@@ -6,6 +6,7 @@ class Users extends CI_Controller {
   // load the new user registration page
 	public function newreg()
 	{
+    $this->load->view('partials/header');
 		$this->load->view('/users/regpage');
   }
 
@@ -37,13 +38,47 @@ class Users extends CI_Controller {
   // load the login page
   public function logpage()
   {
+    $this->load->view('partials/header');
     $this->load->view('/users/loginpage');
   }
 
   // log the user in
   public function login()
   {
-    
+    $post = $this->input->post();
+
+    if(isset($post))
+    {
+      $this->load->model('user');
+
+      // check to see if user exists by email
+      $user = $this->user->get_user_by_email($post['email']);
+      if(isset($user))
+      {
+        // check to see if the password matches
+        if(md5($post['password'] == $user->password))
+        {
+          // load in the data to session
+          $data = array('user_id' => $user->id, 'loggedin' => TRUE);
+          $this->session->set_userdata($data);
+          redirect('/users/profile');
+        }
+      }
+    }
+  }
+
+  public function profile()
+  {
+    // load in the user profile and feed
+    $this->load->view('partials/header');
+    $this->load->view('/users/profile');
+  }
+
+  // log user out
+  public function logout()
+  {
+    $this->session->sess_destroy();
+    redirect('/');
   }
 
 }

@@ -25,7 +25,7 @@ class User extends CI_Model {
     $this->form_validation->set_rules('first_name', 'first name', 'trim|required');
     $this->form_validation->set_rules('last_name', 'last name', 'trim|required');
     $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
-    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[8]|matches[password_confirmation]');
+    $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[4]|matches[password_confirmation]');
     $this->form_validation->set_rules('password_confirmation', 'password confirmation', 'trim|required');
     if($this->form_validation->run()) 
     {
@@ -35,6 +35,14 @@ class User extends CI_Model {
     {
       return array(validation_errors());
     }
+  }
+
+  // find a user by email, for login purposes
+  public function get_user_by_email($email)
+  {
+    $this->db->where('email', $email);
+    $query = $this->db->get('users');
+    return $query->row();
   }
 
 }
