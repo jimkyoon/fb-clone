@@ -45,4 +45,11 @@ class User extends CI_Model {
     return $query->row();
   }
 
+  // find user by id, for feed page purposes
+  public function get_user_byid($id)
+  {
+    $query = "SELECT * FROM users WHERE id=?";
+    return $this->db->query($query, array($id))->row_array();
+  }
+
 }

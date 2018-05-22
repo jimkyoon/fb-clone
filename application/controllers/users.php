@@ -70,8 +70,20 @@ class Users extends CI_Controller {
   public function profile()
   {
     // load in the user profile and feed
-    $this->load->view('partials/header');
-    $this->load->view('/users/profile');
+    $this->load->model('user');
+    if($this->session->userdata())
+    {
+      $user = $this->user->get_user_byid($this->session->userdata('user_id'));
+      $data = array(
+        "user"=>$user
+      );
+      $this->load->view('partials/header');
+      $this->load->view('/users/feed', $data);
+    }
+    else
+    {
+      redirect('/');
+    }
   }
 
   // log user out
