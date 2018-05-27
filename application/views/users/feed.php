@@ -9,6 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </head>
   <body>
     <h1>Hello <?= $user['first_name'] ?>!</h1>
+    <h3>What do people want to know from you?</h3>
+    <form action="/post/create" method="POST">
+      <textarea name="content" cols="30" rows="5"></textarea>
+      <input type="submit" value="Post">
+    </form>
     <p>Check out what's going on!</p>
     <div id="feed">
       <div class="message">

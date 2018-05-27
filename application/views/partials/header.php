@@ -8,7 +8,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Jim's Facebook Clone</title>
   </head>
   <body>
-    <div id="nav">
+    <div id="navleft">
+      <a href="/">Home</a>
+    </div>
+    <div id="navright">
       <?php
         if($this->session->userdata('loggedin') == TRUE)
         {

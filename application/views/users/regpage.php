@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="container">
       <h1>Register</h1>
-      <form action="/users/reg" method="post">
+      <form action="/users/reg" method="POST">
         <label>First Name: </label><input type="text" name="first_name">
         <label>Last Name: </label><input type="text" name="last_name">
         <label>Email: </label><input type="text" name="email">

@@ -71,6 +71,7 @@ class Users extends CI_Controller {
   {
     // load in the user profile and feed
     $this->load->model('user');
+    $this->load->model('post');
     if($this->session->userdata())
     {
       $user = $this->user->get_user_byid($this->session->userdata('user_id'));
