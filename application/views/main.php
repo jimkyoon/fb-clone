@@ -9,6 +9,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </head>
   <body>
 
+    <!-- display success messages -->
+    <div id="success">
+      <?php
+        if($this->session->flashdata('success'))
+        {
+          foreach($this->session->flashdata('success') as $value)
+          { ?>
+            <p><?= $value ?></p>
+          <?php
+          }
+        } ?>
+    </div>
+        
+    <!-- display error messages -->
     <div id="errors">
       <?php
         if($this->session->flashdata('errors'))

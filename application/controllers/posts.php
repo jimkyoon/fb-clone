@@ -11,8 +11,14 @@ class Posts extends CI_Controller {
     $this->load->model('post');
   }
 
+  // create the post
   public function create()
   {
-    
+    $post = $this->input->post();
+    $poster = $this->session->userdata('user_id');
+    $this->post->create($post, $poster);
+    $success[] = "Your post has been sent to the wall.";
+    $this->session->set_flashdata('success', $success);
+    redirect('/users/feed');
   }
 }

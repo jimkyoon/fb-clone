@@ -13,7 +13,7 @@ class Users extends CI_Controller {
   // register the user
   public function reg()
   {
-    $this->load->model('User');
+    $this->load->model('user');
 
     // validate post data
     $result = $this->User->validate($this->input->post());
@@ -61,13 +61,14 @@ class Users extends CI_Controller {
           // load in the data to session
           $data = array('user_id' => $user->id, 'loggedin' => TRUE);
           $this->session->set_userdata($data);
-          redirect('/users/profile');
+          redirect('/users/feed');
         }
       }
     }
   }
 
-  public function profile()
+  // load in the user's feed page with all posts
+  public function feed()
   {
     // load in the user profile and feed
     $this->load->model('user');
