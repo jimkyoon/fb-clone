@@ -75,9 +75,11 @@ class Users extends CI_Controller {
     $this->load->model('post');
     if($this->session->userdata())
     {
-      $user = $this->user->get_user_byid($this->session->userdata('user_id'));
+      $users = $this->user->get_user_byid($this->session->userdata('user_id'));
+      $messages = $this->post->allpost();
       $data = array(
-        "user"=>$user
+        'users'=>$users,
+        'messages'=>$messages
       );
       $this->load->view('partials/header');
       $this->load->view('/users/feed', $data);

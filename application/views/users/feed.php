@@ -36,24 +36,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     
     <div id="container">
-      <h1>Hello <?= $user['first_name'] ?>!</h1>
+      <h1>Hello <?= $users['first_name'] ?>!</h1>
       <h3>What do people want to know from you?</h3>
       <form action="/posts/create" method="POST">
         <textarea name="content" cols="30" rows="5"></textarea>
         <input type="submit" value="Post">
       </form>
       <hr>
-      <h3>Check out what's going on!</h3>
+      <h2>Check out what's going on in the community!</h2>
       <div id="feed">
+        <?php
+          foreach($messages as $message)
+          { ?>
+            <div class="messages">
+              <h4>POSTER</h4>
+              <p><?= $message['content'] ?></p>
+              <div class="likes">
+                <p>Thumbs up</p>
+                <p>Thumbs down</p>
+              </div>
+              <div class="comments">
+                <p> says: Lorem ipsum </p>
+              </div>
+            </div>
+            <?php
+          }
+        ?>
         <div class="message">
-          <h3>John Smith</h3>
+          <h4>John Smith</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor nisi nisl, id gravida lectus suscipit quis. Sed ultricies ex odio, bibendum tincidunt ligula elementum ut. Nam in ipsum ultrices, maximus odio quis, lacinia velit. Mauris in risus nulla. Curabitur in enim a diam finibus bibendum ut non lorem. Maecenas fringilla arcu sit amet neque dapibus pellentesque. Proin at congue nibh.</p>
           <div class="likes">
             <p>Thumbs up</p>
             <p>Thumbs down</p>
           </div>
           <div class="comments">
-            <p>John Smith says: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non ultrices neque. Nullam congue ornare.</p>
+            <p><strong>Jane Doe</strong> says: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non ultrices neque. Nullam congue ornare.</p>
           </div>
         </div>
       </div>

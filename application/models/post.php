@@ -3,10 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Post extends CI_Model {
 
-  // load all posts (limited to 10)
+  // load all posts
   public function allpost()
   {
-    return $this->db->query("SELECT * FROM posts ORDER BY id DESC LIMIT 10")->row_array();
+    $query = "SELECT * FROM posts";
+    return $this->db->query($query)->row_array();
   }
 
   // create the post

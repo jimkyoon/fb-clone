@@ -17,7 +17,7 @@ class Posts extends CI_Controller {
     $post = $this->input->post();
     $poster = $this->session->userdata('user_id');
     $this->post->create($post, $poster);
-    $success[] = "Your post has been sent to the wall.";
+    $success[] = "Your post has been put on the wall!";
     $this->session->set_flashdata('success', $success);
     redirect('/users/feed');
   }
