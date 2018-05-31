@@ -49,7 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           foreach($messages as $message)
           { ?>
             <div class="messages">
-              <h4>POSTER</h4>
+              <hr>
+              <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= $message['updated_at'] ?>:</h4>
               <p><?= $message['content'] ?></p>
               <div class="likes">
                 <p>Thumbs up</p>
@@ -59,11 +60,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p> says: Lorem ipsum </p>
               </div>
             </div>
+            <hr>
             <?php
           }
         ?>
         <div class="message">
-          <h4>John Smith</h4>
+          <h4>John Smith says:</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor nisi nisl, id gravida lectus suscipit quis. Sed ultricies ex odio, bibendum tincidunt ligula elementum ut. Nam in ipsum ultrices, maximus odio quis, lacinia velit. Mauris in risus nulla. Curabitur in enim a diam finibus bibendum ut non lorem. Maecenas fringilla arcu sit amet neque dapibus pellentesque. Proin at congue nibh.</p>
           <div class="likes">
             <p>Thumbs up</p>
@@ -73,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <p><strong>Jane Doe</strong> says: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non ultrices neque. Nullam congue ornare.</p>
           </div>
         </div>
+        <hr>
       </div>
     </div>
     

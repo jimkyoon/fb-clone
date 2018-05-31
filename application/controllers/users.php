@@ -90,6 +90,23 @@ class Users extends CI_Controller {
     }
   }
 
+  // profile page showing all the user's posts
+  public function profile()
+  {
+    // load in user and post models
+    $this->load->model('user');
+    $this->load->model('post');
+    // grab data from url
+    $userid = $this->uri->segment(3);
+    // find all posts by this user
+    $profile = $this->post->get_posts_by_userid($userid);
+    $data = array(
+      'profile'=>$profile
+    );
+    $this->load->view('partials/header');
+    $this->load->view('/users/profile', $data);
+  }
+
   // log user out
   public function logout()
   {
