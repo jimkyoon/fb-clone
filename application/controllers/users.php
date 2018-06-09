@@ -16,12 +16,12 @@ class Users extends CI_Controller {
     $this->load->model('user');
 
     // validate post data
-    $result = $this->User->validate($this->input->post());
+    $result = $this->user->validate($this->input->post());
     
     // if it passes
     if($result == "valid") 
     {
-      $id = $this->User->create($this->input->post());
+      $id = $this->user->create($this->input->post());
       $success[] = "Thank you for signing up! Now please login!";
       $this->session->set_flashdata('success', $success);
       redirect('/users/logpage', $success);
