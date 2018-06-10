@@ -9,7 +9,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </head>
   <body>
     <div id="navleft">
-      <a href="/">Home</a>
+      <?php
+        if($this->session->userdata('loggedin') == TRUE)
+        {
+          echo '<a href="/users/feed">Home</a>';
+        }
+        else
+        {
+          echo '<a href="/">Home</a>';
+        }
+      ?>
     </div>
     <div id="navright">
       <?php

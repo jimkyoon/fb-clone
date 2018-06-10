@@ -52,4 +52,11 @@ class User extends CI_Model {
     return $this->db->query($query, array($id))->row_array();
   }
 
+  // get the users name for profile
+  public function get_username_by_userid($userid)
+  {
+    $query = "SELECT first_name, last_name FROM users WHERE users.id = $userid";
+    return $this->db->query($query)->row_array();
+  }
+
 }

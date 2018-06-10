@@ -36,9 +36,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     
     <div id="container">
-      <h1>You are looking at <?= $profile['first_name'] ?> <?= $profile['last_name'] ?>'s post.</h1>
-      <div>
-      </div>
+      <h1>You are looking at <?= $username['first_name'] ?> <?= $username['last_name'] ?>'s posts.</h1>
+      <?php
+        foreach($profile as $profile)
+        { ?>
+          <hr>
+          <div class="messages">
+            <p><?= $profile['content'] ?></p>
+            <p>posted on <?= $profile['updated_at'] ?></p>
+          </div>
+          <hr>
+          <?php
+        } ?>
     </div>
 
   </body>

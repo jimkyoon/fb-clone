@@ -14,7 +14,7 @@ class Post extends CI_Model {
   // get all posts for a user
   public function get_posts_by_userid($userid)
   {
-    $query = "SELECT * FROM posts WHERE user_id = $userid LEFT JOIN users ON users.id = posts.user_id";
+    $query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id WHERE user_id = $userid";
     return $this->db->query($query)->result_array();
   }
 

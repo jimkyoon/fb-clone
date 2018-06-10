@@ -98,9 +98,12 @@ class Users extends CI_Controller {
     $this->load->model('post');
     // grab data from url
     $userid = $this->uri->segment(3);
+    // get the user name
+    $username = $this->user->get_username_by_userid($userid);
     // find all posts by this user
     $profile = $this->post->get_posts_by_userid($userid);
     $data = array(
+      'username'=>$username,
       'profile'=>$profile
     );
     $this->load->view('partials/header');
