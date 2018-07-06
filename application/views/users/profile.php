@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <hr>
           <div class="messages">
             <p><?= $profile['content'] ?></p>
-            <p>posted on <?= $profile['updated_at'] ?></p>
+            <p>posted on <?= date('M-d-Y', strtotime($profile['updated_at'])); ?></p>
           </div>
           <hr>
           <?php

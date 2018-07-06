@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           { ?>
             <div class="messages">
               <hr>
-              <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= $message['updated_at'] ?>:</h4>
+              <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= date('M-d-Y', strtotime($message['updated_at'])); ?>:</h4>
               <p><?= $message['content'] ?></p>
               <div class="likes">
                 <p>Thumbs up</p>
