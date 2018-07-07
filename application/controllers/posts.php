@@ -21,4 +21,10 @@ class Posts extends CI_Controller {
     $this->session->set_flashdata('success', $success);
     redirect('/users/feed');
   }
+
+  // user likes a post
+  public function like()
+  {
+    
+  }
 }

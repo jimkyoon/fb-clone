@@ -6,6 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <head>
     <meta charset="utf-8">
     <title>Jim's Facebook Clone</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
   </head>
   <body>
 
@@ -44,20 +46,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </form>
       <hr>
       <h2>Check out what's going on in the community!</h2>
+      <hr>
       <div id="feed">
         <?php
           foreach($messages as $message)
           { ?>
             <div class="messages">
-              <hr>
-              <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= date('M-d-Y', strtotime($message['updated_at'])); ?>:</h4>
+              <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= date('M d Y', strtotime($message['updated_at'])); ?>:</h4>
               <p><?= $message['content'] ?></p>
               <div class="likes">
-                <p>Thumbs up</p>
-                <p>Thumbs down</p>
+                <a href="/posts/like"><i class="fas fa-thumbs-up"></i></a>
+                <a href="/posts/dislike"><i class="fas fa-thumbs-down"></i></a>
+                <p>*** has liked this post.</p>
+                <p>*** has disliked this post.</p>
               </div>
               <div class="comments">
-                <p> says: Lorem ipsum </p>
+                <p>John Smith says: Lorem ipsum </p>
               </div>
             </div>
             <hr>
@@ -68,8 +72,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <h4>John Smith says:</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor nisi nisl, id gravida lectus suscipit quis. Sed ultricies ex odio, bibendum tincidunt ligula elementum ut. Nam in ipsum ultrices, maximus odio quis, lacinia velit. Mauris in risus nulla. Curabitur in enim a diam finibus bibendum ut non lorem. Maecenas fringilla arcu sit amet neque dapibus pellentesque. Proin at congue nibh.</p>
           <div class="likes">
-            <p>Thumbs up</p>
-            <p>Thumbs down</p>
+            <i class="fas fa-thumbs-up"></i>
+            <i class="fas fa-thumbs-down"></i>
+            <p>2 has liked this post.</p>
+            <p>1 has disliked this post.</p>
           </div>
           <div class="comments">
             <p><strong>Jane Doe</strong> says: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non ultrices neque. Nullam congue ornare.</p>
