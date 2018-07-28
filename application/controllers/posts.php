@@ -25,6 +25,18 @@ class Posts extends CI_Controller {
   // user likes a post
   public function like()
   {
-    
+    $like = $this->input->post();
+    $liker = $this->session->userdata('user_id');
+    $this->post->like($like, $liker);
+    redirect('/users/feed');
+  }
+
+  // user dislikes a post
+  public function dislike()
+  {
+    $dislike = $this->input->post();
+    $disliker = $this->session->userdata('user_id');
+    $this->post->dislike($dislike, $disliker);
+    redirect('/users/feed');
   }
 }

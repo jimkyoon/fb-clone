@@ -55,8 +55,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <h4><a href="/users/profile/<?= $message['user_id'] ?>"><?= $message['first_name'] ?> <?= $message['last_name'] ?></a> posted on <?= date('M d Y', strtotime($message['updated_at'])); ?>:</h4>
               <p><?= $message['content'] ?></p>
               <div class="likes">
-                <a href="/posts/like"><i class="fas fa-thumbs-up"></i></a>
-                <a href="/posts/dislike"><i class="fas fa-thumbs-down"></i></a>
+                <form action="/posts/like" method="POST">
+                  <input type="hidden" value=<?= $message['id'] ?>>
+                  <button><i class="fas fa-thumbs-up"></i></button>
+                </form>
+                <form action="/posts/dislike" method="POST">
+                  <input type="hidden" value=<?= $message['id'] ?>>
+                  <button><i class="fas fa-thumbs-down"></i></i></button>
+                </form>
                 <p>*** has liked this post.</p>
                 <p>*** has disliked this post.</p>
               </div>
