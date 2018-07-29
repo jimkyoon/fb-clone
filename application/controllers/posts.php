@@ -9,6 +9,7 @@ class Posts extends CI_Controller {
     parent::__construct();
     $this->load->model('user');
     $this->load->model('post');
+    $this->load->model('like');
   }
 
   // create the post
@@ -27,8 +28,17 @@ class Posts extends CI_Controller {
   {
     $like = $this->input->post();
     $liker = $this->session->userdata('user_id');
-    $this->post->like($like, $liker);
-    redirect('/users/feed');
+    // check if user has liked this post already
+    $likecheck = $this->like->like_set($like, $liker);
+    if($likecheck == "valid")
+    {
+      $this->post->like($like, $liker);
+      redirect('/users/feed');
+    }
+    else
+    {
+      // do nothing
+    }
   }
 
   // user dislikes a post
