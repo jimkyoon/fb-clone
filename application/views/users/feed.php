@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <p><?= $message['content'] ?></p>
               <div class="likes">
                 <form action="/posts/like" method="POST">
-                  <input type="hidden" value=<?= $message['id'] ?>>
+                  <input type="hidden" name="likeval" value=<?= $message['id'] ?>>
                   <button><i class="fas fa-thumbs-up"></i></button>
                 </form>
                 <form action="/posts/dislike" method="POST">

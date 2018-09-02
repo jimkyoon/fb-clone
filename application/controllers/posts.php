@@ -26,27 +26,35 @@ class Posts extends CI_Controller {
   // user likes a post
   public function like()
   {
-    $like = $this->input->post();
+    $like = $this->input->post('likeval');
     $liker = $this->session->userdata('user_id');
     // check if user has liked this post already
     $likecheck = $this->like->like_set($like, $liker);
     if($likecheck == "valid")
     {
-      $this->post->like($like, $liker);
       redirect('/users/feed');
     }
     else
     {
-      // do nothing
+      $this->like->liked($like, $liker);
+      redirect('/users/feed');
     }
   }
 
   // user dislikes a post
   public function dislike()
   {
-    $dislike = $this->input->post();
-    $disliker = $this->session->userdata('user_id');
-    $this->post->dislike($dislike, $disliker);
-    redirect('/users/feed');
+    $like = $this->input->post('likeval');
+    $liker = $this->session->userdata('user_id');
+    $likecheck = $this->like->like_set($like, $liker);
+    if($likecheck == "valid")
+    {
+      redirect('/users/feed');
+    }
+    else
+    {
+      $this->like->disliked($like, $liker);
+      redirect('/users/feed');
+    }
   }
 }
