@@ -73,6 +73,7 @@ class Users extends CI_Controller {
     // load in the user profile and feed
     $this->load->model('user');
     $this->load->model('post');
+    $this->load->model('like');
     if($this->session->userdata())
     {
       $users = $this->user->get_user_byid($this->session->userdata('user_id'));
@@ -96,6 +97,7 @@ class Users extends CI_Controller {
     // load in user and post models
     $this->load->model('user');
     $this->load->model('post');
+    $this->load->model('like');
     // grab data from url
     $userid = $this->uri->segment(3);
     // get the user name

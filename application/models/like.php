@@ -34,6 +34,18 @@ class Like extends CI_Model {
     }
   }
 
-  // count the like/dislike
+  // count the like
+  public function like_count()
+  {
+    $query = "SELECT COUNT(*) FROM likes WHERE `like`=1";
+    return $this->db->query($query);
+  }
 
+  // count the dislike
+  public function dislike_count()
+  {
+    $query = "SELECT COUNT(*) FROM likes WHERE `like`=2";
+    return $this->db->query($query);
+  }
+  
 }

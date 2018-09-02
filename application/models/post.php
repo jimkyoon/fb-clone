@@ -7,14 +7,18 @@ class Post extends CI_Model {
   public function allpost()
   {
     // find all posts and limit the results to 25
-    $query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id ORDER BY posts.updated_at DESC LIMIT 25";
+    $query = "SELECT * FROM posts 
+      LEFT JOIN users ON users.id = posts.user_id 
+      LEFT JOIN likes ON likes.post_id = posts.id 
+      ORDER BY posts.updated_at DESC LIMIT 25";
     return $this->db->query($query)->result_array();
   }
 
   // get all posts for a user
   public function get_posts_by_userid($userid)
   {
-    $query = "SELECT * FROM posts LEFT JOIN users ON users.id = posts.user_id WHERE user_id = $userid";
+    $query = "SELECT * FROM posts 
+      LEFT JOIN users ON users.id = posts.user_id WHERE user_id = $userid";
     return $this->db->query($query)->result_array();
   }
 
